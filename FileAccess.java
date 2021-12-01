@@ -18,12 +18,16 @@ public class FileAccess {
 			File f = new File(path);
 			try{
 				BufferedReader br = new BufferedReader( new InputStreamReader (new FileInputStream(f),"UTF-8") );
-				String s;
+				//String s;
+				int count = 0;
 				String text = "";
-				while((s = br.readLine()) != null ){
-					text += s + '\n';
-					//System.out.println("text=" + text);
-		        }
+				while((count = br.read()) != -1){
+					text += (char) count;
+				}
+				//while((s = br.readLine()) != null ){
+				//	text += s + '\n';
+				//	//System.out.println("text=" + text);
+		        //}
 				String after = text;
 				//if(after.substring(after.length() - 1).equals("\n")){
 				//	after = after.substring(0,after.length() - 1);
@@ -46,11 +50,11 @@ public class FileAccess {
             d.getPanel().getTextArea().setText("");
 		    try{
 		        BufferedReader br = new BufferedReader( new InputStreamReader (new FileInputStream(file),"UTF-8") );
-		        String s;
+		        int count = 0;
 				String text = "";
-		        while((s = br.readLine()) != null ){
-					text += s + '\n';
-		        }
+				while((count = br.read()) != -1){
+					text += (char) count;
+				}
 		        
 				String after = text;
 				//if(after.substring(after.length() - 1).equals("\n")){
